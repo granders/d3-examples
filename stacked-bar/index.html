@@ -21,11 +21,11 @@
             h = 500
 
             // create canvas
-            var svg = d3.select("#viz").append("svg:svg")
+            var svg = d3.select("#viz").append("svg")
             .attr("class", "chart")
             .attr("width", w)
             .attr("height", h )
-            .append("svg:g")
+            .append("g")
             .attr("transform", "translate(10,470)");
 
             x = d3.scale.ordinal().rangeRoundBands([0, w-50])
@@ -66,7 +66,7 @@
             // Add a group for each column.
             var valgroup = svg.selectAll("g.valgroup")
             .data(stacked)
-            .enter().append("svg:g")
+            .enter().append("g")
             .attr("class", "valgroup")
             .style("fill", function(d, i) { return z(i); })
             .style("stroke", function(d, i) { return d3.rgb(z(i)).darker(); });
@@ -74,7 +74,7 @@
             // Add a rect for each date.
             var rect = valgroup.selectAll("rect")
             .data(function(d){return d;})
-            .enter().append("svg:rect")
+            .enter().append("rect")
             .attr("x", function(d) { return x(d.x); })
             .attr("y", function(d) { return -y(d.y0) - y(d.y); })
             .attr("height", function(d) { return y(d.y); })
